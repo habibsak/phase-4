@@ -1,0 +1,325 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #272632;
+  --secondary-color: #1e1c29;
+  --accent-color: #ff4d74;
+  --gray-1: #f4f4f4;
+  --gray-2: #898282;
+  --cols: 1;
+}
+
+/* Remove default margin */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+ul,
+ol,
+dl,
+dd {
+  margin: 0 0 1.5rem;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+
+html {
+  line-height: 1.5;
+  font-family: "Poppins", Roboto, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+  color: var(--gray-1);
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  margin: 0;
+  background-color: var(--primary-color);
+}
+
+/* A elements that don't have a class get default styles */
+a {
+  text-decoration-skip-ink: auto;
+  color: #36bf7f;
+}
+
+a:hover,
+a:focus {
+  color: #d96666;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+svg {
+  fill: currentColor;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+}
+
+header {
+  text-align: center;
+  background: var(--secondary-color);
+  position: fixed;
+  width: 100%;
+  box-shadow: 5px 2px 18px var(--accent-color);
+}
+
+header h1 {
+  margin-bottom: 0;
+  padding: 1rem;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.album_art__full {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 1rem;
+  padding: 6rem 1rem 0 1rem;
+  max-width: 38rem;
+  text-align: center;
+}
+
+.album_art__full img {
+  margin-bottom: 2rem;
+}
+
+.album_art__full #btnShuffle {
+  align-self: center;
+}
+
+#btnShuffle,
+#btnPrev,
+#btnPlay,
+#btnNext {
+  background-color: transparent;
+  color: var(--accent-color);
+  border: none;
+}
+
+#btnShuffle i {
+  font-size: 3rem;
+}
+
+.playlist {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 1rem 0 6rem;
+}
+
+.playlist li {
+  border-bottom: 0.06rem solid var(--gray-2);
+  padding: 0.75rem;
+  cursor: pointer;
+}
+
+.playlist li:first-child {
+  border-top: 0.06rem solid var(--gray-2);
+}
+
+.playlist li.selected {
+  background-color: var(--secondary-color);
+  color: var(--accent-color);
+  border: 0.06rem solid var(--accent-color);
+}
+
+.track__item {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+}
+
+.track__thumb {
+  flex-shrink: 0;
+}
+
+.track__details {
+  flex-grow: 1;
+  padding-left: 2rem;
+  flex-wrap: wrap;
+}
+
+.track__details .track__title {
+  margin-bottom: 0.5rem;
+}
+
+.track__details .track__artist {
+  margin-bottom: 0;
+}
+
+footer {
+  background: var(--secondary-color);
+  padding-bottom: 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 6.03125rem;
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.progress {
+  height: 0.5rem;
+  width: 100%;
+  background-color: var(--gray-1);
+  margin-bottom: 1rem;
+}
+
+.played {
+  height: 0.5rem;
+  width: 0;
+  background-color: var(--accent-color);
+}
+
+footer #btnPrev i,
+#btnNext i {
+  font-size: 2rem;
+}
+
+footer #btnPlay i {
+  font-size: 3rem;
+}
+
+footer .times {
+  font-size: 1.2rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+body.playing .main-heading {
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: heading 1s linear infinite;
+  display: inline-block;
+}
+
+body.playing .album_art__full {
+  animation: wobble 2s ease;
+}
+
+@keyframes heading {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes wobble {
+  0% {
+    transform: translateX(0%);
+    background-color: var(--accent-color);
+  }
+  15% {
+    transform: translateX(-25%) rotate(-5deg);
+  }
+  30% {
+    transform: translateX(20%) rotate(3deg);
+  }
+  45% {
+    transform: translateX(-15%) rotate(-3deg);
+  }
+  60% {
+    transform: translateX(10%) rotate(2deg);
+  }
+  75% {
+    transform: translateX(-5%) rotate(-1deg);
+  }
+  100% {
+    transform: translateX(0%);
+    background-color: var(--primary-color);
+  }
+}
+
+@media only screen and (min-width: 68.5em) {
+  .grid {
+    --cols: 2;
+  }
+
+  main {
+    padding-top: 5rem;
+  }
+
+  .playlist {
+    padding-right: 2rem;
+  }
+}
